@@ -46,7 +46,7 @@ def scut():
     except NoSuchElementException as e:
         print ("菲兹签到代码存在异常"+str(e))
 
-def huawei():
+def zhiyoo():
 	browser.get("http://bbs.zhiyoo.net/member.php?mod=logging&action=login&phonelogin=no")
     print("打开zhiyoo了!")
 		time.sleep(10)
@@ -59,7 +59,7 @@ def huawei():
 
 if __name__ == '__main__':
     scut()
-		huawei()
+		zhiyoo()
     # situyun()
     # 脚本运行成功,退出浏览器
     browser.quit()

@@ -22,26 +22,33 @@ def scut():
     browser.maximize_window()
     print("打开网页了!")
     time.sleep(10)
-    return
-    # 格式是PEP8自动转的
-    # 这里是找到输入框,发送要输入的用户名和密码,模拟登陆
-    browser.find_element_by_xpath(
-        "//*[@id='un']").send_keys(os.environ['SCUT_USER'])
-    browser.find_element_by_xpath(
-        "//*[@id='pd']").send_keys(os.environ['SCUT_PASSWORD'])
-    # 在输入用户名和密码之后,点击登陆按钮
-    browser.find_element_by_xpath("//*[@id='index_login_btn']").click()
-    time.sleep(10)
+    # 窗口最大化
+    browser.maximize_window()
+
+    # 延迟2秒，用于加载完整
+    time.sleep(2)
+
+
+    # 找到登录表单,发送用户名和密码
+    email = "123456789999@gmail.com"#你的邮箱账户
+    password = "123456789"#你的密码
+    browser.find_element_by_xpath("/html/body/main/div/div/div/section/div[1]/div/div/div/div/div[2]/form/div[1]/div/div/input").send_keys(email)
+    browser.find_element_by_xpath("/html/body/main/div/div/div/section/div[1]/div/div/div/div/div[2]/form/div[2]/div/div/input").send_keys(password)
+
+    # 点击提交按钮
+    browser.find_element_by_xpath("/html/body/main/div/div/div/section/div[1]/div/div/div/div/div[2]/form/div[3]/div/div/button").click()
+
+
+
+
     try:
-        browser.find_element_by_xpath("//*[@id='app']/div/div/div[2]/div[3]/button").click()
-        print("华工申报成功")
+            # 进入用户界面，定位签到按钮
+        browser.find_element_by_xpath("/html/body/main/div[2]/section/div[2]/div[1]/div[1]/div/div[2]/div/div/div/button").click()
+        print("菲兹签到成功")
         time.sleep(3)
-        #saveFile("华工健康申报签到成功！")
     except NoSuchElementException as e:
-        print ("华工签到代码存在异常"+str(e))
-        # js = 'document.getElementById("btn").click();'
-        # browser.execute_script(js)
-        #saveFile("华工签到代码存在异常"+str(e))
+        print ("菲兹签到代码存在异常"+str(e))
+
 
 
 

@@ -58,7 +58,7 @@ def zhiyoo():
 	print("zhiyoo登录成功")
 
 if __name__ == '__main__':
-    scut()
+    #scut()
 		zhiyoo()
     # situyun()
     # 脚本运行成功,退出浏览器

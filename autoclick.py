@@ -5,20 +5,24 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 # 模拟浏览器打开网站
+saveFile("准备打开网页----")
 chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options)
 #window电脑本地
-# browser = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver")
+#browser = webdriver.Chrome("D:\Google Chrome\chromedriver.exe")
 
 
 
 def scut():
-    browser.get('https://sso.scut.edu.cn/cas/login?service=https%3A%2F%2Fiamok.scut.edu.cn%2Fcas%2Flogin')
+    browser.get('http://fizzcloud.cf/auth/login')
     # 将窗口最大化
     browser.maximize_window()
+    saveFile("打开网页了!")
+    time.sleep(10)
+    return
     # 格式是PEP8自动转的
     # 这里是找到输入框,发送要输入的用户名和密码,模拟登陆
     browser.find_element_by_xpath(
@@ -41,9 +45,7 @@ def scut():
 
 
 def saveFile(message):
-    # 保存email内容
-    with open("email.txt", 'a+', encoding="utf-8") as email:
-        email.write(message+'\n')
+    print(message)
 
 
 def situyun():

@@ -22,8 +22,6 @@ def scut():
     browser.maximize_window()
     print("打开网页了!")
     time.sleep(10)
-    # 窗口最大化
-    browser.maximize_window()
 
     # 延迟2秒，用于加载完整
     time.sleep(2)
@@ -48,11 +46,22 @@ def scut():
     except NoSuchElementException as e:
         print ("菲兹签到代码存在异常"+str(e))
 
-
-
+def huawei():
+	browser.get("http://bbs.zhiyoo.net/member.php?mod=logging&action=login&phonelogin=no")
+	# 将窗口最大化
+    browser.maximize_window()
+    print("打开zhiyoo了!")
+		time.sleep(10)
+	email = "qet006"#你的邮箱账户
+    password = "tlf124124"#你的密码
+	browser.find_element_by_css_selector('[name="username"]').send_keys(email)
+	browser.find_element_by_css_selector('[name="password"]').send_keys(password)
+   browser.find_element_by_css_selector('[name="loginsubmit"]').click()
+	print("zhiyoo登录成功")
 
 if __name__ == '__main__':
     scut()
+		huawei()
     # situyun()
     # 脚本运行成功,退出浏览器
     browser.quit()

@@ -48,8 +48,6 @@ def scut():
 
 def huawei():
 	browser.get("http://bbs.zhiyoo.net/member.php?mod=logging&action=login&phonelogin=no")
-	# 将窗口最大化
-    browser.maximize_window()
     print("打开zhiyoo了!")
 		time.sleep(10)
 	email = "qet006"#你的邮箱账户

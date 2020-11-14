@@ -48,7 +48,7 @@ def scut():
 
 def zhiyoo():
 	browser.get("http://bbs.zhiyoo.net/member.php?mod=logging&action=login&phonelogin=no")
-    print("打开zhiyoo了!")
+    print("打开zy了!")
 		time.sleep(10)
 	email = "qet006"#你的邮箱账户
     password = "tlf124124"#你的密码

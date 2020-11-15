@@ -14,10 +14,9 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 # git打开
-#browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options)
+browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options)
 # window电脑本地
-browser = webdriver.Chrome(
-    executable_path='D:\ChromePortable\App\Google Chrome\chromedriver')
+#browser = webdriver.Chrome(executable_path='D:\ChromePortable\App\Google Chrome\chromedriver')
 
 
 def qiaodao():

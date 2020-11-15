@@ -4,7 +4,7 @@ import os
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-import requests
+#import requests
 
 QLog =""
 # 模拟浏览器打开网站
@@ -136,7 +136,7 @@ def sendmeg():
     "text":"绿色签到",
     "desp":QLog
     }
-    req = requests.post(api,data = data)   
+   # req = requests.post(api,data = data)   
 
 if __name__ == '__main__':
     qiaodao()

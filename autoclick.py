@@ -24,12 +24,6 @@ def qiaodao():
     browser.get(
         "https://portableappk.com/point-manage/")
     log_print("打开portableappk签到网站了!",1)
-#     # 获取当前页面title并断言
-#     title = browser.title
-#     print("当前页面的title是：", title, "\n")
-#     # 获取当前页面url并断言
-#     currentPageUrl = browser.current_url
-#     print("当前页面的url是：", currentPageUrl)
     time.sleep(5)
     t = browser.find_element_by_css_selector('.widget-my-cred')
     log_print("用户中心："+ t.text)
@@ -54,15 +48,15 @@ def logoin():
         obj.click()
         time.sleep(10)
         if obj.text=="签到完毕":
-            log_print("签到完毕*****"+browser.find_element_by_css_selector('#my-balance span').text,1)
+            log_print("---签到完毕*****"+browser.find_element_by_css_selector('#my-balance span').text,1)
         else:    
-            log_print("******未找效验成功请人工查验******",1)  
+            log_print("---******未找效验成功请人工查验******",1)  
     else:
         if obj.text=="签到完毕":
-            log_print("签到完毕*****"+browser.find_element_by_css_selector('#my-balance span').text,1)
+            log_print("--签到完毕*****"+browser.find_element_by_css_selector('#my-balance span').text,1)
         else:    
-            log_print("******未找到签到按钮******",1)      
-    sendmeg()
+            log_print("---******未找到签到按钮******",1)      
+    log_print("-----------------portableappk网站结束******",1)
 
 
 def qd():
@@ -153,5 +147,7 @@ def sendmeg():
 
 if __name__ == '__main__':
     qiaodao()
+    sendmeg()
+    time.sleep(1)
     # 脚本运行成功,退出浏览器
     browser.quit()

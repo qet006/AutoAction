@@ -2,9 +2,10 @@
 import os
 # 方便延时加载
 import time
+import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-import requests
+
 
 QLog =""
 # 模拟浏览器打开网站

@@ -49,7 +49,7 @@ def logoin():
     obj=browser.find_element_by_css_selector('#checkin')
     if obj.text=='打卡签到':
         log_print("******开始签到******")
-        #obj.click()
+        obj.click()
         log_print("******签到完成******")
     else:
         log_print("******未找到签到按钮******")    

@@ -140,7 +140,7 @@ def zhfh(t1,t2,t3,t5):
 def log_print(nr,pd=0):
     global QLog
     print(nr) 
-    if pd>0  
+    if pd>0 : 
         QLog =QLog +"  \n  <br/>  " +nr
 
 def sendmeg():

@@ -18,17 +18,17 @@ browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_option
 # window电脑本地
 #browser = webdriver.Chrome(executable_path='D:\ChromePortable\App\Google Chrome\chromedriver')
 
-
+#****************************portableappk签到***开始
 def qiaodao():
     browser.get(
         "https://portableappk.com/point-manage/")
     log_print("打开网站了!")
-    # 获取当前页面title并断言
-    title = browser.title
-    print("当前页面的title是：", title, "\n")
-    # 获取当前页面url并断言
-    currentPageUrl = browser.current_url
-    print("当前页面的url是：", currentPageUrl)
+#     # 获取当前页面title并断言
+#     title = browser.title
+#     print("当前页面的title是：", title, "\n")
+#     # 获取当前页面url并断言
+#     currentPageUrl = browser.current_url
+#     print("当前页面的url是：", currentPageUrl)
     time.sleep(5)
     t = browser.find_element_by_css_selector('.widget-my-cred')
     log_print("用户中心："+ t.text)
@@ -50,6 +50,7 @@ def logoin():
     if obj.text=='打卡签到':
         log_print("******开始签到******")
         obj.click()
+        time.sleep(10)
         log_print("******签到完成******")
     else:
         log_print("******未找到签到按钮******")    
@@ -60,8 +61,9 @@ def qd():
     dlcs=1
     while browser.current_url.find('wp-login.php')>-1:
         log_print("准备签到"+str(dlcs))
-        username = "qet006"  # 你的邮箱账户
-        password = "124124"  # 你的密码
+        username = os.environ['SCUT_USER']
+        password = os.environ['SCUT_PASSWORD']
+        log_print("username: "+username+"  password: "+password)
         time.sleep(1)
         obj=browser.find_element_by_css_selector('#user_login')
         obj.clear()
@@ -123,6 +125,9 @@ def zhfh(t1,t2,t3,t5):
         if t1=='': return str(int(t5/t3))
         if t3=='': return str(int(t5/t1))
         if t5=='': return str(int(t1*t3)) 
+        
+       
+ #****************************portableappk签到***结束
 
 def log_print(nr):
     global QLog
@@ -140,4 +145,4 @@ def sendmeg():
 if __name__ == '__main__':
     qiaodao()
     # 脚本运行成功,退出浏览器
-    # browser.quit()
+    browser.quit()

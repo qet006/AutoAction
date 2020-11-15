@@ -47,6 +47,7 @@ def logoin():
     time.sleep(5)
     log_print("准备登录******")
     obj=browser.find_element_by_css_selector('#checkin')
+    log_print("签到按钮文本:"+obj.text)
     if obj.text=='打卡签到':
         log_print("******开始签到******")
         obj.click()

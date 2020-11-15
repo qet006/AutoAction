@@ -23,7 +23,7 @@ browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_option
 def qiaodao():
     browser.get(
         "https://portableappk.com/point-manage/")
-    log_print("打开网站了!")
+    log_print("打开portableappk签到网站了!",1)
 #     # 获取当前页面title并断言
 #     title = browser.title
 #     print("当前页面的title是：", title, "\n")
@@ -54,15 +54,14 @@ def logoin():
         obj.click()
         time.sleep(10)
         if obj.text=="签到完毕":
-            log_print("签到完毕*****"+browser.find_element_by_css_selector('#my-balance span').text)
+            log_print("签到完毕*****"+browser.find_element_by_css_selector('#my-balance span').text,1)
         else:    
-            log_print("******未找效验成功请人工查验******")  
-        log_print("******签到完成******")
+            log_print("******未找效验成功请人工查验******",1)  
     else:
         if obj.text=="签到完毕":
-            log_print("签到完毕*****"+browser.find_element_by_css_selector('#my-balance span').text)
+            log_print("签到完毕*****"+browser.find_element_by_css_selector('#my-balance span').text,1)
         else:    
-            log_print("******未找到签到按钮******")      
+            log_print("******未找到签到按钮******",1)      
     sendmeg()
 
 
@@ -138,10 +137,11 @@ def zhfh(t1,t2,t3,t5):
        
  #****************************portableappk签到***结束
 
-def log_print(nr):
+def log_print(nr,pd=0):
     global QLog
-    print(nr)  
-    QLog =QLog +"  <br/>  " +nr
+    print(nr) 
+    if pd>0  
+        QLog =QLog +"  \n  <br/>  " +nr
 
 def sendmeg():
     api = "https://sc.ftqq.com/SCU124619T832fb34a7837a9739824a610d986adfb5fa7fbce6b018.send"

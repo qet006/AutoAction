@@ -52,9 +52,16 @@ def logoin():
         log_print("******开始签到******")
         obj.click()
         time.sleep(10)
+        if obj.text=="签到完毕":
+            log_print("签到完毕*****"+browser.find_element_by_css_selector('#my-balance span').text)
+        else:    
+            log_print("******未找效验成功请人工查验******")  
         log_print("******签到完成******")
     else:
-        log_print("******未找到签到按钮******")    
+        if obj.text=="签到完毕":
+            log_print("签到完毕*****"+browser.find_element_by_css_selector('#my-balance span').text)
+        else:    
+            log_print("******未找到签到按钮******")      
     sendmeg()
 
 

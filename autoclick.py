@@ -132,7 +132,7 @@ def zhfh(t1,t2,t3,t5):
 #############################portableappk结束
 #EKP开始
 
-def EKP_qd():
+def ekp_qd():
     browser.get( "http://www.myekp.net/login.jsp")
     time.sleep(5)
     log_print("EKP准备登录******")
@@ -191,7 +191,7 @@ def sendmeg():
 if __name__ == '__main__':
     qiaodao()
     log_print("-------------",1)
-    #EKP_qd()
+    ekp_qd()
     sendmeg()
     time.sleep(1)
     # 脚本运行成功,退出浏览器

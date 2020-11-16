@@ -134,8 +134,14 @@ def zhfh(t1,t2,t3,t5):
 
 def ekp_qd():
     browser.get( "http://www.myekp.net/login.jsp")
-    time.sleep(5)
     log_print("EKP准备登录******")
+    time.sleep(5)
+    if browser.current_url.find('third/pda')>-1
+        log_print("***进入移动端了,准备跳转PC端***",1)
+        browser.find_element_by_css_selector("#pc").click()
+        time.sleep(5)
+        if browser.current_url.find('third/pda')>-1
+            log_print("***跳转PC端失败,取消EKP签到!***",1)
     username =os.environ['EKP_USER']
     password =os.environ['EKP_PASSWORD']
     log_print("username: "+username+"  password: "+password)

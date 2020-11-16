@@ -19,7 +19,7 @@ browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_option
 # window电脑本地
 #browser = webdriver.Chrome(executable_path='D:\ChromePortable\App\Google Chrome\chromedriver')
 
-#*********************************portableappk签到***开始
+#############################portableappk签到***开始
 def qiaodao():
     browser.get( "https://portableappk.com/point-manage/")
     log_print("打开portableappk签到网站了!",1)
@@ -129,8 +129,9 @@ def zhfh(t1,t2,t3,t5):
         if t5=='': return str(int(t1*t3)) 
         
        
-#-------------------------------------------------portableappk结束
-#********************************EKP开始
+#############################portableappk结束
+#EKP开始
+
 def EKP_qd():
     browser.get( "http://www.myekp.net/login.jsp")
     time.sleep(5)
@@ -168,9 +169,9 @@ def EKP_qd():
         log_print("***EKP签到成功!***",1)
     
 
-#-------------------------------------------------EKPk结束
+#############################EKPk结束
 
-#*********************************公用函数开始
+#############################公用函数开始
 #打印后台,pd=1为记录发送消息
 def log_print(nr,pd=0):
     global QLog
@@ -185,7 +186,7 @@ def sendmeg():
     "desp":QLog
     }
     req = requests.post(api,data = data)   
-#-------------------------------------------------公用函数结束
+#############################公用函数结束
 
 if __name__ == '__main__':
     #qiaodao()

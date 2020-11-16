@@ -40,5 +40,7 @@ jobs:
           env:
             SCUT_USER: ${{ secrets.SCUT_USER }}
             SCUT_PASSWORD: ${{ secrets.SCUT_PASSWORD }}
+            EKP_USER: ${{ secrets.EKP_USER }}
+            EKP_PASSWORD: ${{ secrets.EKP_PASSWORD }}
           run: python autoclick.py
 

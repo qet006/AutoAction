@@ -138,7 +138,7 @@ def EKP_qd():
     username =os.environ['EKP_USER']
     password =os.environ['EKP_PASSWORD']
     log_print("username: "+username+"  password: "+password)
-    time.sleep(1)
+    time.sleep(3)
     browser.find_element_by_css_selector('.lui_login_input_username').send_keys(username)
     browser.find_element_by_css_selector('.lui_login_input_password').send_keys(password)
     browser.find_element_by_css_selector('.lui_login_button_div_c').click()

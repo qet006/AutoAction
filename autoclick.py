@@ -189,9 +189,9 @@ def sendmeg():
 #############################公用函数结束
 
 if __name__ == '__main__':
-    #qiaodao()
+    qiaodao()
     log_print("-------------",1)
-    EKP_qd()
+    #EKP_qd()
     sendmeg()
     time.sleep(1)
     # 脚本运行成功,退出浏览器

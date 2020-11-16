@@ -188,7 +188,7 @@ def sendmeg():
 #-------------------------------------------------公用函数结束
 
 if __name__ == '__main__':
-    qiaodao()
+    #qiaodao()
     log_print("-------------",1)
     EKP_qd()
     sendmeg()

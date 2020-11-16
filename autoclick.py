@@ -19,10 +19,9 @@ browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_option
 # window电脑本地
 #browser = webdriver.Chrome(executable_path='D:\ChromePortable\App\Google Chrome\chromedriver')
 
-#****************************portableappk签到***开始
+#*********************************portableappk签到***开始
 def qiaodao():
-    browser.get(
-        "https://portableappk.com/point-manage/")
+    browser.get( "https://portableappk.com/point-manage/")
     log_print("打开portableappk签到网站了!",1)
     time.sleep(5)
     t = browser.find_element_by_css_selector('.widget-my-cred')
@@ -36,6 +35,7 @@ def qiaodao():
             return 
     logoin()
 
+#登录
 def logoin():
     if browser.current_url.find('wp-admin')>-1:
         browser.find_element_by_css_selector("#wp-admin-bar-site-name").click()
@@ -58,8 +58,8 @@ def logoin():
             log_print("---******未找到签到按钮******",1)      
     log_print("-----------------portableappk网站结束******",1)
 
-
-def qd():
+#开始签到
+def qd(): 
     dlcs=1
     while browser.current_url.find('wp-login.php')>-1:
         log_print("准备签到"+str(dlcs))
@@ -87,7 +87,7 @@ def qd():
         browser.find_element_by_css_selector('#wp-submit').click()
         time.sleep(2)
         dlcs=dlcs+1
-
+#识别数字
 def zh(s):
     if s=='': return ''
     if s=='0' or s=='零':
@@ -113,7 +113,7 @@ def zh(s):
     if len(s)>1 and s.find('十')<0:
         return int(s)
     return ''    
-
+#根据加减乘 得到填空数字
 def zhfh(t1,t2,t3,t5):
     if t2==' + ':
         if t1=='': return str(int(t5-t3))
@@ -129,14 +129,55 @@ def zhfh(t1,t2,t3,t5):
         if t5=='': return str(int(t1*t3)) 
         
        
- #****************************portableappk签到***结束
+#-------------------------------------------------portableappk结束
+#********************************EKP开始
+def EKP_qd():
+    browser.get( "http://www.myekp.net/login.jsp")
+    time.sleep(5)
+    log_print("EKP准备登录******")
+    username =os.environ['EKP_USER']
+    password =os.environ['EKP_PASSWORD']
+    log_print("username: "+username+"  password: "+password)
+    time.sleep(1)
+    browser.find_element_by_css_selector('.lui_login_input_username').send_keys(username)
+    browser.find_element_by_css_selector('.lui_login_input_password').send_keys(password)
+    browser.find_element_by_css_selector('.lui_login_button_div_c').click()
+    time.sleep(2)
+    if browser.current_url.find('index.html')==-1:
+        log_print("***EKP登录失败!,取消EKP签到!***",1)
+        return
+    log_print("***EKP登录成功!***",1)
+    obj=browser.find_element_by_css_selector('.nav a:nth-child(2)')
+    if obj.text!="社区":
+        log_print("***未找到社区按钮!,取消EKP签到!***",1)
+        return
+    obj.click()
+    time.sleep(2)
+    obj=browser.find_element_by_css_selector('.ci_checkBox')
+    log_print("签到按钮文本:"+obj.text)
+    if obj.text!="签到领积分":
+        if obj.text=="今日已签到":
+            log_print("***EKP已签到成功!不用重复签到***",1) 
+        else:    
+            log_print("***签到按钮不对!,取消EKP签到!***",1)
+        return
+    obj.click()
+    time.sleep(2)
+    obj=browser.find_element_by_css_selector('.ci_checkBox')
+    if obj.text=="今日已签到":
+        log_print("***EKP签到成功!***",1)
+    
 
+#-------------------------------------------------EKPk结束
+
+#*********************************公用函数开始
+#打印后台,pd=1为记录发送消息
 def log_print(nr,pd=0):
     global QLog
     print(nr) 
     if pd>0 : 
         QLog =QLog +"  \n  <br/>  " +nr
-
+#发送消息
 def sendmeg():
     api = "https://sc.ftqq.com/SCU124619T832fb34a7837a9739824a610d986adfb5fa7fbce6b018.send"
     data = {
@@ -144,9 +185,12 @@ def sendmeg():
     "desp":QLog
     }
     req = requests.post(api,data = data)   
+#-------------------------------------------------公用函数结束
 
 if __name__ == '__main__':
     qiaodao()
+    log_print("-------------",1)
+    EKP_qd()
     sendmeg()
     time.sleep(1)
     # 脚本运行成功,退出浏览器

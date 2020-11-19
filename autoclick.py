@@ -21,26 +21,21 @@ browser = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_option
 
 #############################portableappk签到***开始
 def qiaodao():
-    browser.get( "https://portableappk.com/point-manage/")
-    log_print("打开portableappk签到网站了!",1)
+    browser.get( "https://portableappk.com/wp-login.php")
     time.sleep(5)
-    t = browser.find_element_by_css_selector('.widget-my-cred')
-    log_print("用户中心："+ t.text)
-    if t.text.find('用户等级') == -1:
-        browser.find_element_by_css_selector('.widget-my-cred a:nth-child(1)').click()
-        if browser.current_url.find('wp-login.php')>-1:
-            qd()
-        else:
-            log_print("***错误!!未到登录页面***")
-            return 
-    logoin()
+    if browser.current_url.find('wp-login.php')>-1:
+        denglu()
+    else:
+			log_print("***错误!!未到登录页面***")
+			return 
+    qd()
 
-#登录
-def logoin():
+#签到
+def qd():
     if browser.current_url.find('wp-admin')>-1:
         browser.find_element_by_css_selector("#wp-admin-bar-site-name").click()
     time.sleep(5)
-    log_print("准备登录******")
+    log_print("准备签到******")
     obj=browser.find_element_by_css_selector('#checkin')
     log_print("签到按钮文本:"+obj.text)
     if obj.text=='打卡签到':
@@ -58,8 +53,8 @@ def logoin():
             log_print("---******未找到签到按钮******",1)      
     log_print("-----------------portableappk网站结束******",1)
 
-#开始签到
-def qd(): 
+#开始登录
+def denglu(): 
     dlcs=1
     while browser.current_url.find('wp-login.php')>-1:
         log_print("准备签到"+str(dlcs))
@@ -197,7 +192,7 @@ def sendmeg():
 
 if __name__ == '__main__':
     qiaodao()
-    log_print("-------------",1)
+    log_print("---",1)
     ekp_qd()
     sendmeg()
     time.sleep(1)

@@ -26,8 +26,8 @@ def qiaodao():
     if browser.current_url.find('wp-login.php')>-1:
         denglu()
     else:
-			log_print("***错误!!未到登录页面***")
-			return 
+	log_print("***错误!!未到登录页面***")
+	return 
     qd()
 
 #签到

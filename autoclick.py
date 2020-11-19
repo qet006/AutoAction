@@ -41,9 +41,9 @@ def qd():
     time.sleep(5)
     log_print("准备签到******")
     obj = browser.find_element_by_css_selector('#open-checkin')
-    if len(obj)==0:
-        log_print("签到按钮没找到,停止签到!",1)
-        return;
+#     if len(obj)==0:
+#         log_print("签到按钮没找到,停止签到!",1)
+#         return;
     log_print("签到按钮文本:"+obj.text)
     if obj.text == '打卡签到':
         log_print("******开始签到******")

@@ -231,7 +231,7 @@ def sendmeg():
 
 
 if __name__ == '__main__':
-    qiaodao()
+   # qiaodao()
     log_print("---", 1)
     ekp_qd()
     sendmeg()

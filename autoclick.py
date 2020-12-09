@@ -201,7 +201,7 @@ def ekp_qd():
         else:
             log_print("***签到按钮不对!,取消EKP签到!***", 1)
         return
-    browser.find_element_by_css_selector('.ci_checkBox').click()
+    browser.find_element_by_css_selector('.ci_check_wrap').click()
     time.sleep(2)
     obj = browser.find_element_by_css_selector('.ci_checkBox')
     if obj.text == "今日已签到":

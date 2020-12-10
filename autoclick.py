@@ -187,11 +187,7 @@ def ekp_qd():
         log_print("***EKP登录失败!,取消EKP签到!***", 1)
         return
     log_print("***EKP登录成功!***", 1)
-    obj = browser.find_element_by_css_selector('.nav a:nth-child(2)')
-    if obj.text != "社区":
-        log_print("***未找到社区按钮!,取消EKP签到!***", 1)
-        return
-    obj.click()
+    browser.get("http://www.myekp.net/w/index.html#/sns")
     time.sleep(2)
     obj = browser.find_element_by_css_selector('.ci_checkBox')
     log_print("签到按钮文本:"+obj.text)
@@ -201,8 +197,8 @@ def ekp_qd():
         else:
             log_print("***签到按钮不对!,取消EKP签到!***", 1)
         return
-   # browser.find_element_by_css_selector('.ci_check_wrap').click()
-    browser.execute_script('$(".ci_checkBox ").click()')
+    browser.find_element_by_css_selector('.ci_check_wrap').click()
+    #browser.execute_script('$(".ci_checkBox ").click()')
     time.sleep(2)
     obj = browser.find_element_by_css_selector('.ci_checkBox')
     if obj.text == "今日已签到":

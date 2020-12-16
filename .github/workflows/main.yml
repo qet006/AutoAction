@@ -34,8 +34,8 @@ jobs:
               && sudo mv chromedriver /usr/local/bin/chromedriver \
               && sudo chmod +x /usr/local/bin/chromedriver \
               && chromedriver --version
-#         - name: 'Get Date'
-#           run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Jining' date '+%Y-%m-%d %T')"
+        - name: 'Get Date'
+          run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Jining' date '+%Y-%m-%d %T')"
         - name: 'AutoClick'
           env:
             SCUT_USER: ${{ secrets.SCUT_USER }}
